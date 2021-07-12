@@ -25,6 +25,11 @@ class App extends Component {
       .then((users) => this.setState({ monsters: users }));
   }
 
+  // Handle Change Function
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value });
+  };
+
   // Render method
   render() {
     const { monsters, searchField } = this.state;
@@ -34,9 +39,10 @@ class App extends Component {
 
     return (
       <div className="App">
+        <h1>Monsters Rolodex</h1>
         <SearchField
           placeHolder="Search Monsters"
-          handleChange={(e) => this.setState({ searchField: e.target.value })}
+          handleChange={this.handleChange}
         />
         <CardList monsters={filteredMonsters} />
       </div>
@@ -44,4 +50,5 @@ class App extends Component {
   }
 }
 
+// Default Export
 export default App;
